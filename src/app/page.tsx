@@ -1,69 +1,116 @@
-import Image from "next/image";
+import Link from "next/link";
+import {
+  IconMessageCircle,
+  IconPhone,
+  IconHistory,
+  IconHeart,
+  IconArrowRight,
+} from "@tabler/icons-react";
 
-export default function Home() {
+import { AppShell } from "@/components/layout/AppShell";
+import { Card } from "@/components/ui/Card";
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <AppShell>
+      <div className="mx-auto max-w-5xl space-y-8">
+        {/* Welcome */}
+        <section>
+          <h1 className="text-3xl font-bold text-foreground md:text-4xl">
+            Welcome to RoboMaya! 🐱
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="mt-3 text-secondary">
+            Your friendly AI companion is here whenever you need a chat.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        </section>
+
+        {/* Main welcome card */}
+        <Card className="md:p-10">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-lg">
+              <p className="mb-2 text-sm font-medium text-secondary">
+                YOUR AI COMPANION
+              </p>
+
+              <h2 className="text-2xl font-semibold text-foreground">
+                Hello there! 💜
+              </h2>
+
+              <p className="mt-3 text-secondary">
+                I'm RoboMaya. We can talk about your day, explore ideas or just
+                have a friendly conversation.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/chat"
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                >
+                  <IconMessageCircle size={20} stroke={1.75} />
+                  Start chatting
+                </Link>
+
+                <Link
+                  href="/calls"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-3 font-medium text-foreground transition-colors hover:bg-accent hover:text-brand-900"
+                >
+                  <IconPhone size={20} stroke={1.75} />
+                  Voice call
+                </Link>
+              </div>
+            </div>
+
+            {/* Mascot placeholder */}
+            <div className="flex h-44 w-full shrink-0 items-center justify-center rounded-3xl bg-background md:w-48">
+              <span className="text-7xl" role="img" aria-label="Cat">
+                🐱
+              </span>
+            </div>
+          </div>
+        </Card>
+
+        {/* Dashboard cards */}
+        <section className="grid gap-4 md:grid-cols-2">
+          <Card>
+            <div className="mb-4 flex items-center gap-3">
+              <IconHistory size={24} stroke={1.75} className="text-secondary" />
+              <h2 className="text-lg font-semibold">Recent conversations</h2>
+            </div>
+
+            <p className="text-secondary">
+              Your recent chats with RoboMaya will appear here.
+            </p>
+
+            <Link
+              href="/chat"
+              className="mt-6 inline-flex items-center gap-2 font-medium text-primary hover:underline"
+            >
+              View conversations
+              <IconArrowRight size={18} />
+            </Link>
+          </Card>
+
+          <Card>
+            <div className="mb-4 flex items-center gap-3">
+              <IconHeart size={24} stroke={1.75} className="text-secondary" />
+              <h2 className="text-lg font-semibold">Saved memories</h2>
+            </div>
+
+            <p className="text-secondary">
+              The things you choose to let RoboMaya remember will appear here.
+            </p>
+
+            <Link
+              href="/memories"
+              className="mt-6 inline-flex items-center gap-2 font-medium text-primary hover:underline"
+            >
+              View memories
+              <IconArrowRight size={18} />
+            </Link>
+          </Card>
+        </section>
+      </div>
+    </AppShell>
   );
 }

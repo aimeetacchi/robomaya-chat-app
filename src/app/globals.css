@@ -1,24 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Enable class-based dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Original RoboMaya purple palette */
+@theme {
+  --color-brand-900: #4c2365;
+  --color-brand-700: #7f5d99;
+  --color-brand-500: #9e7eb5;
+  --color-brand-300: #c4a4da;
 }
 
+/* Tailwind semantic colour tokens */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Light mode (default) */
+:root {
+  color-scheme: light;
+
+  --background: #f8f5fb;
+  --foreground: #33223d;
+  --surface: #ffffff;
+  --primary: #4c2365;
+  --primary-foreground: #ffffff;
+  --secondary: #7f5d99;
+  --accent: #c4a4da;
+  --border: #e9ddf1;
 }
 
+/* Dark mode */
+.dark {
+  color-scheme: dark;
+
+  --background: #171020;
+  --foreground: #f5eafb;
+  --surface: #24172f;
+  --primary: #c4a4da;
+  --primary-foreground: #171020;
+  --secondary: #e4c9f4;
+  --accent: #4c2365;
+  --border: #594369;
+}
+
+/* Global styles */
 body {
   background: var(--background);
   color: var(--foreground);
