@@ -1,5 +1,7 @@
 # 🐱 RoboMaya
 
+![RoboMaya — Your friendly AI robocat companion](./assets/robomaya-banner.png)
+
 **Your friendly AI-powered robocat companion.** 💜
 
 RoboMaya is a personal AI companion application built with Next.js, React and TypeScript. It features a friendly grey-and-white robotic cat that users can chat with, and will eventually support voice conversations and personalised long-term memory.
